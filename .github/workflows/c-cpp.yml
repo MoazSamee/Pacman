@@ -19,7 +19,3 @@ jobs:
     - uses: actions/checkout@v4
     - name: compiling Code
       run: gcc -o my main.c -lcsfml-graphics -lcsfml-window -lcsfml-system
-    - name: Run compiled file
-      run: |
-        export DISPLAY=:0
-        ./my
