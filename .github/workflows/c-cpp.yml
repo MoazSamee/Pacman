@@ -17,15 +17,7 @@ jobs:
     - name: Install CSFML
       run: sudo apt install libcsfml-dev
     - uses: actions/checkout@v4
-    - name: Configure
-      run: ./configure
-    - name: Make
-      run: make
-    - name: Make check
-      run: make check
-    - name: Make distcheck
-      run: make distcheck
-    - name: Compile main.c
+    - name: compiling Code
       run: gcc -o my main.c -lcsfml-graphics -lcsfml-window -lcsfml-system
     - name: Run compiled file
       run: ./my
