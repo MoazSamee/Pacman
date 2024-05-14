@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Update apt
+      run: sudo apt update
+    - name: Install CSFML
+      run: sudo apt install libcsfml-dev
+    - uses: actions/checkout@v4
+    - name: Configure
+      run: ./configure
+    - name: Make
+      run: make
+    - name: Make check
+      run: make check
+    - name: Make distcheck
+      run: make distcheck
+    - name: Compile main.c
+      run: gcc -o my main.c -lcsfml-graphics -lcsfml-window -lcsfml-system
+    - name: Run compiled file
+      run: ./my
